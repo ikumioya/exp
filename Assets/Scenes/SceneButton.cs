@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class SceneLoader : MonoBehaviour
+
+public class SceneButton : MonoBehaviour
 {
-    public void LoadScene(string sceneName)
+    public string sceneName;
+
+    public void Load()
     {
         SceneManager.LoadScene(sceneName);
     }

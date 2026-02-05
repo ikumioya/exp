@@ -1,53 +1,43 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ControllerSceneSelector : MonoBehaviour
+public class ControllerSceneSelectorRaw : MonoBehaviour
 {
-    [Header("í èÌì¸óÕ")]
-    public string sceneA;
-    public string sceneB;
-    public string sceneStick;
-
-    [Header("ÉOÉäÉbÉvâüÇµÇ»Ç™ÇÁ")]
-    public string sceneGripA;
-    public string sceneGripB;
-    public string sceneGripStick;
+    [Header("ÈÄöÂ∏∏ÂÖ•Âäõ")]
+    public string sceneA, sceneB, sceneStick;
+    [Header("Âè≥„Ç∞„É™„ÉÉ„ÉóÊäº„Åó„Å™„Åå„Çâ")]
+    public string sceneGripA, sceneGripB, sceneGripStick;
 
     void Update()
     {
-        bool gripHeld = OVRInput.Get(OVRInput.Button.SecondaryHandTrigger);
+        // Âè≥„Ç∞„É™„ÉÉ„ÉóÔºà„Ç¢„Éä„É≠„Ç∞Ôºâ: RawAxis„ÅßÁ¢∫ÂÆü„Å´Âèñ„Çã
+        float grip = OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger);
+        bool gripHeld = grip > 0.6f;
 
-        // ===== í èÌ =====
+        // A/BÔºàÂè≥ÊâãÔºâ
+        bool aDown = OVRInput.GetDown(OVRInput.RawButton.A);
+        bool bDown = OVRInput.GetDown(OVRInput.RawButton.B);
+
+        // Âè≥„Çπ„ÉÜ„Ç£„ÉÉ„ÇØÊäº„ÅóËæº„Åø
+        bool stickDown = OVRInput.GetDown(OVRInput.RawButton.RThumbstick);
+
         if (!gripHeld)
         {
-            if (OVRInput.GetDown(OVRInput.Button.One))
-                Load(sceneA);
-
-            if (OVRInput.GetDown(OVRInput.Button.Two))
-                Load(sceneB);
-
-            if (OVRInput.GetDown(OVRInput.Button.SecondaryThumbstick))
-                Load(sceneStick);
+            if (aDown) Load(sceneA);
+            else if (bDown) Load(sceneB);
+            else if (stickDown) Load(sceneStick);
         }
-        // ===== ÉOÉäÉbÉvïπóp =====
         else
         {
-            if (OVRInput.GetDown(OVRInput.Button.One))
-                Load(sceneGripA);
-
-            if (OVRInput.GetDown(OVRInput.Button.Two))
-                Load(sceneGripB);
-
-            if (OVRInput.GetDown(OVRInput.Button.SecondaryThumbstick))
-                Load(sceneGripStick);
+            if (aDown) Load(sceneGripA);
+            else if (bDown) Load(sceneGripB);
+            else if (stickDown) Load(sceneGripStick);
         }
     }
 
-    void Load(string sceneName)
+    void Load(string name)
     {
-        if (!string.IsNullOrEmpty(sceneName))
-        {
-            SceneManager.LoadScene(sceneName);
-        }
+        if (!string.IsNullOrEmpty(name))
+            SceneManager.LoadScene(name);
     }
 }

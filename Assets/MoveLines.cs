@@ -3,7 +3,7 @@ using UnityEngine;
 public class MoveZLoop : MonoBehaviour
 {
     public float speed = 1.0f;   // m/s
-    public float distance = 6.0f; // ˆÚ“®‹——£
+    public float distance = 6.0f; // ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½
 
     private Vector3 startPos;
     private float moved = 0f;
@@ -15,19 +15,19 @@ public class MoveZLoop : MonoBehaviour
 
     void Update()
     {
-        // ¡ƒtƒŒ[ƒ€‚Å“®‚­‹——£
+        // ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Å“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         float step = speed * Time.deltaTime;
 
-        // -Z•ûŒü‚ÖˆÚ“®
+        // -Zï¿½ï¿½ï¿½ï¿½ï¿½ÖˆÚ“ï¿½
         transform.Translate(0, 0, -step);
 
         moved += step;
 
-        // 6mi‚ñ‚¾‚ç–ß‚·
-        if (moved >= distance)
+        // 6mï¿½iï¿½ñ‚¾‚ï¿½ß‚ï¿½
+        /*if (moved >= distance)
         {
             transform.position = startPos;
             moved = 0f;
-        }
+        }*/
     }
 }

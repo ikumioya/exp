@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/speed1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/speed1v.unity
+    path: Assets/Scenes/speed1vold.unity
     guid: ba59c5ee9dc391049992eb37d249668c
   - enabled: 1
     path: Assets/Scenes/speed1.5.unity

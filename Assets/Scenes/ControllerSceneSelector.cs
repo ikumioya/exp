@@ -5,21 +5,32 @@ public class ControllerSceneSelectorRaw : MonoBehaviour
 {
     [Header("通常入力")]
     public string sceneA, sceneB, sceneStick;
+
     [Header("右グリップ押しながら")]
     public string sceneGripA, sceneGripB, sceneGripStick;
 
+    [Header("スティック倒し判定")]
+    public float stickThreshold = 0.7f; // 0.5〜0.8で調整
+
+    bool prevStickActive;
+
     void Update()
     {
-        // 右グリップ（アナログ）: RawAxisで確実に取る
+        // 右グリップ（アナログ）
         float grip = OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger);
         bool gripHeld = grip > 0.6f;
 
-        // A/B（右手）
+        // A/B
         bool aDown = OVRInput.GetDown(OVRInput.RawButton.A);
         bool bDown = OVRInput.GetDown(OVRInput.RawButton.B);
 
-        // 右スティック押し込み
-        bool stickDown = OVRInput.GetDown(OVRInput.RawButton.RThumbstick);
+        // 右スティック倒し
+        Vector2 stick = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
+        bool stickActive = stick.magnitude > stickThreshold;
+
+        // 押した瞬間だけ反応させる
+        bool stickDown = stickActive && !prevStickActive;
+        prevStickActive = stickActive;
 
         if (!gripHeld)
         {

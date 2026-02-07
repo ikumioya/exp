@@ -4,45 +4,38 @@ using UnityEngine.SceneManagement;
 public class ControllerSceneSelectorRaw : MonoBehaviour
 {
     [Header("通常入力")]
-    public string sceneA, sceneB, sceneStick;
+    public string sceneA, sceneB, sceneStickClick;
 
     [Header("右グリップ押しながら")]
-    public string sceneGripA, sceneGripB, sceneGripStick;
+    public string sceneGripA, sceneGripB, sceneGripStickClick;
 
-    [Header("スティック倒し判定")]
-    public float stickThreshold = 0.7f; // 0.5〜0.8で調整
-
-    bool prevStickActive;
+    [Header("グリップしきい値")]
+    public float gripThreshold = 0.6f;
 
     void Update()
     {
         // 右グリップ（アナログ）
         float grip = OVRInput.Get(OVRInput.RawAxis1D.RHandTrigger);
-        bool gripHeld = grip > 0.6f;
+        bool gripHeld = grip > gripThreshold;
 
-        // A/B
+        // A/B（右）
         bool aDown = OVRInput.GetDown(OVRInput.RawButton.A);
         bool bDown = OVRInput.GetDown(OVRInput.RawButton.B);
 
-        // 右スティック倒し
-        Vector2 stick = OVRInput.Get(OVRInput.RawAxis2D.RThumbstick);
-        bool stickActive = stick.magnitude > stickThreshold;
-
-        // 押した瞬間だけ反応させる
-        bool stickDown = stickActive && !prevStickActive;
-        prevStickActive = stickActive;
+        // 右スティック押し込み（クリック）
+        bool stickClickDown = OVRInput.GetDown(OVRInput.RawButton.RThumbstick);
 
         if (!gripHeld)
         {
             if (aDown) Load(sceneA);
             else if (bDown) Load(sceneB);
-            else if (stickDown) Load(sceneStick);
+            else if (stickClickDown) Load(sceneStickClick);
         }
         else
         {
             if (aDown) Load(sceneGripA);
             else if (bDown) Load(sceneGripB);
-            else if (stickDown) Load(sceneGripStick);
+            else if (stickClickDown) Load(sceneGripStickClick);
         }
     }
 

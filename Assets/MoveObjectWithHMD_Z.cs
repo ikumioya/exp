@@ -24,7 +24,7 @@ public class MoveObjectWithHMD_Z : MonoBehaviour
         float deltaZ = currentZ - lastEyeZ;
 
         // HMDが前後に動いた分だけ、同じ量オブジェクトをZに動かす
-        targetObject.position += 0.725f *new Vector3(0f, 0f, deltaZ);
+        targetObject.position += 0.75f *new Vector3(0f, 0f, deltaZ);
 
         lastEyeZ = currentZ;
     }

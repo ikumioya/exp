@@ -237,10 +237,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneA: speed0.5
   sceneB: speed1.5
-  sceneStick: speed1
+  sceneStickClick: speed1
   sceneGripA: speed0.5v
   sceneGripB: speed1.5v
-  sceneGripStick: speed1v
+  sceneGripStickClick: speed1v
+  gripThreshold: 0.6
 --- !u!4 &276977022
 Transform:
   m_ObjectHideFlags: 0

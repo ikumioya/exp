@@ -13,11 +13,14 @@ EditorBuildSettings:
     guid: f197daa452e01fa428c8fa9beb808a87
   - enabled: 1
     path: Assets/Scenes/speed0.5v.unity
-    guid: 65a2799eb04721443b10356189d62c6a
+    guid: aceb53fd08cadf94e82b7c74ef1f34fb
   - enabled: 1
     path: Assets/Scenes/speed1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/speed1v.unity
+    guid: 1e2d17ef07bcb3e4aa56f7f8ba4e6a54
+  - enabled: 0
     path: Assets/Scenes/speed1vold.unity
     guid: ba59c5ee9dc391049992eb37d249668c
   - enabled: 1
@@ -25,7 +28,7 @@ EditorBuildSettings:
     guid: 9a23cd8a1f74358448b0f8e7d494c124
   - enabled: 1
     path: Assets/Scenes/speed1.5v.unity
-    guid: e815abcb66c5cd44eb554a1fa463b936
+    guid: 0f01dbfce3f8cb54b9b8cad8585de1f4
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 016f79cf0045f604c8f6b92b551c2c31, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: dbf2e280305fb604d871643d9f6eb3f8, type: 2}
